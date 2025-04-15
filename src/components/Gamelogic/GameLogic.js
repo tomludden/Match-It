@@ -2,12 +2,13 @@ import './GameLogic.css'
 import { themes } from '/Themes.js'
 
 // Game state variables
-let matchesMade = 0
+
 let currentThemeIndex = parseInt(localStorage.getItem('currentThemeIndex')) || 0
 let score = parseInt(localStorage.getItem('score')) || 0
 let attempts = parseInt(localStorage.getItem('attempts')) || 5
 let firstCard, secondCard
 let matchedCards = JSON.parse(localStorage.getItem('matchedCards')) || []
+let matchesMade = parseInt(localStorage.getItem('matchesMade')) || 0
 
 export const initGame = () => {
   const cardGrid = document.querySelector('.card-grid')
@@ -36,8 +37,7 @@ export const loadTheme = (themeIndex) => {
 
   cardGrid.innerHTML = ''
 
-  attempts = 5
-  localStorage.setItem('attempts', attempts)
+  attempts = parseInt(localStorage.getItem('attempts')) || 5
 
   const theme = themes[themeIndex]
 
